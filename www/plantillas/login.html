@@ -1,0 +1,107 @@
+<ion-view  view-title="Pets Mananger">
+        <ion-nav-bar class="bar-positive">
+</ion-nav-bar>
+       <ion-content class="padding">
+<ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="true">
+    
+  <ion-slide>
+         <ion-content class="has-header">
+<!--            <img ng-src="{{ article.imageURL }}" ng-style="{ 'width': '100%' }" />
+            <div ng-bind-html="article.html"></div>-->
+            
+            <div class=""><h1>Bienvenido a DOGSI APP</h1>
+            
+            
+                <p>Conoce mas de esta Interesante alternativa para la ayuda animal y rescate que permite que cientos de animales en cautiverio, o que simplemente  no tuvieron suerte, la tengan!</p>
+    
+<div class="row">
+                <div class="col item-image mosaico" ><img src="img/dandy.JPG"/></div>
+                <div class="col item-image mosaico"><img src="img/abuelo.jpg"/></div>
+                <div class="col item-image mosaico"><img src="img/descarga (1).jpg"/></div>
+                <div class="col item-image mosaico"><img src="img/images (2).jpg"/></div>
+                <div class="col item-image mosaico"><img src="img/dogsy.jpg"/></div>
+</div>
+<div class="row">
+                                <div class="col item-image mosaico" ><img src="img/images (2).jpg"/></div>
+                                <div class="col item-image mosaico"><img src="img/hueso.jpg"/></div>
+                                <div class="col item-image mosaico"><img src="img/descarga (2).jpg"/></div>
+                                <div class="col item-image mosaico"><img src="img/descarga (3).jpg"/></div>
+                                <div class="col item-image mosaico"><img src="img/descarga (4).jpg"/></div>
+</div>
+            </div>
+<ul class="list">
+    <li class="item">
+          <button class=" button button-royal button-outline  button-outline"  ng-click="nextSlide()" >Login</button>
+
+    </li>
+    <li class="item">
+    <button class=" button button-royal button-outline  button-outline"  ng-click="nextSlide()" >Noti-Mascotas</button>
+    </li>
+</ul>
+
+            
+
+    
+    
+    
+            
+            </ion-content>
+      
+    
+    
+  </ion-slide>
+<!--  <ion-slide>
+    
+ 
+ <div class="list">
+
+  <div class="item item-divider">
+      <h2> Instituciones que Asocidas:</h2>
+  </div>
+
+  <a class="item" href="#">
+    Butterfinger
+  </a>
+       <a class="item" href="#">
+    Butterfinger
+  </a>
+       <a class="item" href="#">
+    Butterfinger
+  </a>
+       <a class="item" href="#">
+    Butterfinger
+  </a>
+     
+</div>
+      <button class=" button button-positive button-outline"  >Comienza  Donando Aquí</button>
+      <button class=" button button-royal button-outline"  ng-click="nextSlide()" >Siguiente</button>     
+      
+  </ion-slide>-->
+  <ion-slide>
+  <ion-modal-view>
+      
+      <form ng-submit="login()"  ng-model="forma" name="nuevoforma" class="css-form" novalidate>   
+
+      <div class="list list-inset">
+          <label class="item item-input">
+              <input type="text" placeholder="Username" ng-model="data.username">
+          </label>
+          <label class="item item-input">
+              <input type="password" placeholder="Password" ng-model="data.password">
+          </label>
+      </div>
+ <div class="padding">
+    <span style="color:red">
+        {{mensajeadvertencia}}
+    </span>
+</div>
+          <button type="submit" class="button button-block button-positive">Login</button>
+      <a class="button button-block  button-clear button-positive" ui-sref="registropersona">Crear una Cuenta en DogSiApp</a>
+      
+      </form>
+      
+</ion-modal-view>
+  </ion-slide>
+</ion-slide-box>
+      </ion-content>
+    </ion-view>

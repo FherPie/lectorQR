@@ -1,0 +1,72 @@
+<ion-view  view-title="Mascotas"   name="dashboard-view">
+    
+<!--        
+    <ion-nav-bar class="bar-balanced">-->
+  <ion-nav-buttons side="left">
+<!--    <button class="button icon-left ion-compass button-clear" ng-click="openModal()">Nueva</button>
+    <button class="button icon-left ion-compass button-clear" ng-click="openModal()">Nueva</button>-->
+    
+<!--      <button class="button button-icon icon ion-navicon"></button>-->
+<!--  <div class="h1 title">Mascotas</div>-->
+  <button class="button icon-left ion-heart button-clear"   ui-sref="principal.insertarmascota">Nueva</button>
+  </ion-nav-buttons>
+<!--    </ion-nav-bar>-->
+    
+    
+    <ion-content class="">
+<!--        <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+  </ion-refresher>-->
+ 
+<div class="list">
+    
+    
+    
+
+    <!--<a class="item item-avatar item-button-right" ng-repeat="mascota in mascotas"   >-->
+        
+        
+        <mascota-info info="mascota" ng-repeat="mascota in mascotas" ></mascota-info>
+        
+        
+        
+  
+<!--        <img src="img/New-York-population-Times-Square.jpg"  />
+      <h2>Venkman</h2>
+      <p>Back off, man. I'm a scientist.</p>
+       <button class="button" ng-click="showActionsheet()">
+       Acciones
+      </button>-->
+<!--      <button class="button button-outline button-positive" ng-click="openModal()" >Edit</button>-->
+<!--    </a>
+    -->
+<!--   <ion-infinite-scroll
+    on-infinite="loadMore()"
+    distance="1%"
+    ng-if="moreDataCanBeLoaded()"
+    icon="ion-loading-c"
+    >
+  </ion-infinite-scroll>  -->
+</div>
+<!--      <button ng-click="openModal()" >Open Modal</button>-->
+<!--      This is open for everyone!
+      <img src="../img/New-York-population-Times-Square.jpg"/>-->
+
+ 
+  </ion-content>
+
+
+</ion-view>
+
+<script id="my-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar >
+      <h1 class="title">My Modal title</h1>
+    <button ng-click="closeModal()" >Open Modal</button>
+    </ion-header-bar>
+    <ion-content>
+      Hello!
+    </ion-content>
+  </ion-modal-view>
+</script>

@@ -1,0 +1,40 @@
+<div class="list">
+
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Título</span>
+    <input type="text" placeholder="Título de la publicación"  name="asunto"  ng-model="noticia.asunto" required>
+  </label>
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Contenido</span>
+       <textarea name="contenido"   rows="6"  placeholder="Contenido de la publicación"
+			ng-model="noticia.cuerpo">
+	</textarea>
+  </label>
+
+</div>
+
+
+     <div class="item item-thumbnail-left col-50 nomargin" style="border:1px solid white" >
+    <img class="icon" ng-src="data:image/png;base64, {{ mascota.pin }}" height="50" width="50">
+       <h2 class="title ">{{ mascota.nombres }}</h2> 
+       <p class="developer">{{ mascota.raza }}</p>
+        <p class="price">{{ mascota.color1 }}</p>
+        <p class="price">{{ mascota.edad }}</p>
+        <p class="price">{{ mascota.id }}</p>
+          
+
+
+    </div>
+              
+              
+<div class="padding">
+    <span style="color:red">
+        {{mensajeadvertencia}}
+    </span>
+</div>
+
+<div class="padding">
+          <button type="submit" class="button button-block button-positive icon-center ion-checkmark"
+                    >Publicar</button>
+</div>
+

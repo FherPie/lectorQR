@@ -1,0 +1,185 @@
+<!--<ion-view  name="dashboard-view" view-title="Mascota Perfil">
+    
+  <ion-nav-buttons side="right left">
+    <button class="button icon-left ion-compass button-clear" ng-click="openModal()">Nueva</button>
+    <button class="button icon-left ion-compass button-clear" ng-click="openModal()">Nueva</button>
+    
+      <button class="button button-icon icon ion-navicon"></button>
+<ion-nav-back-button class="button-clear"
+    ng-click="myGoBack()">
+    <i class="ion-arrow-left-c"></i> Back
+  </ion-nav-back-button>
+  <button class="button ion-arrow-left-c button-clear"  ng-click="myGoBack()" >  Cancelar</button>
+  <div class="h1 title">Mascota</div>
+  <button class="button icon-left ion-share button-clear"  >Guardar</button>
+  </ion-nav-buttons>
+
+ <ion-content class="">-->
+      
+<div class="list">
+    
+<!--<p>Username:<br>
+  <input type="text" name="user" ng-model="user" required>
+  <span style="color:red" ng-show="nuevoforma.user.$dirty && nuevoforma.user.$invalid">
+  <span ng-show="nuevoforma.user.$error.required">Username is required.</span>
+  </span>
+</p>-->
+    
+    
+ <div class="row">
+     <div class="col col-60 "><span class="input-label">Fotografía</span></div>
+<!--  <div class="col">.col</div>-->
+<!--  <div class="col col-40"><button class="button button-clear button-positive" type="button" ng-click="escojerfoto()">
+  <i class="icon  ion-images ion-ios-albums"></i> Escojer del Album
+</button> </div>-->
+</div>
+    
+    <div class="item item-thumbnail-left">
+        
+        <img id="myImage" class="fotomascota" ng-src="{{mascota.pin}}"  />
+<!--  <div class="col">.col</div>-->
+<!--<p>Hola</p>
+<p>Hola</p>-->
+       <button class="padding-left button  button-clear button-positive" type="button" ng-click="tomarfoto()">
+  <i class="icon ion-android-camera ion-ios-camera"></i> Tomar Fotografía
+</button><br/>
+  <button class="padding-left button button-clear button-positive" type="button" ng-click="escojerfoto()">
+  <i class="icon  ion-images ion-ios-albums"></i> Escojer del Album
+</button> 
+
+</div>
+    
+<!--    <div class="row">
+  <div class="col">            </div>
+  <div class="col">        <button class="button button-clear button-positive" type="button" ng-click="escojerfoto()">
+  <i class="icon  ion-images ion-ios-albums"></i> Escojer del Album
+</button> </div>
+</div>-->
+
+    
+<!-- <label class="item  item-stacked-label">
+     
+     <img id="myImage" class="fotomascota" src="../img/andy.png"  />
+    <span class="input-label">Teléfono en Emergencia</span>
+    <input type="text" placeholder="02-2070338"    ng-model="mascota.telefonoemergencia"   >
+  </label>
+    
+    <div class="padding  button-bar">
+        <button class="button  button-clear button-positive" type="button" ng-click="tomarfoto()">
+  <i class="icon ion-android-camera ion-ios-camera"></i> Tomar Fotografía
+</button>
+    
+            <button class="button button-clear button-positive" type="button" ng-click="escojerfoto()">
+  <i class="icon  ion-images ion-ios-albums"></i> Escojer del Album
+</button>    -->
+
+<!--</div>-->
+ 
+
+
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Nombre</span>
+    <input type="text" placeholder="Matusalen"  name="nombre"  ng-model="mascota.nombres" required>
+<!--     <span style="color:red" ng-show="nuevoforma.nombre.$dirty && nuevoforma.nombre.$invalid">
+    <span ng-show="nuevoforma.nombre.$error.required">Nombre es Requerido.</span>   
+    </span>-->
+  </label>
+<!--   
+  <label class="item item-input item-stacked-label">
+    <span class="input-label" >Apellido</span>
+    <input type="text" placeholder="Suhr" name="apellido"    ng-model="mascota.apellidos"  >
+  </label>
+    -->
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Raza</span>
+    <input type="text" placeholder="Doberman, Cruzado, Mestizo " name="raza" ng-model="mascota.raza" required >
+<!--    <span style="color:red" ng-show="nuevoforma.raza.$dirty && nuevoforma.raza.$invalid">
+    <span ng-show="nuevoforma.raza.$error.required">Raza es Requerido.</span>   
+    </span>-->
+  </label>
+    
+<!--   <label class="item item-input item-stacked-label">
+    <span class="input-label"  >Email</span>
+    <input type='email' validar-email name='email' id='email'   placeholder="john@suhr.com"  ng-model="mascota.email" required>
+     <span style="color:red" ng-show="nuevoforma.email.$dirty && nuevoforma.email.$invalid">
+    <span ng-show="nuevoforma.email.$error.required">El Email  es Requerido.</span>   
+    </span>
+  </label>  -->
+    
+<!--  <label class="item item-input item-stacked-label">
+    <span class="input-label">Ingresar Código del Collar</span>
+    <input type="text" placeholder="123456748"  name="codigo" ng-model="mascota.codigo"    >
+    <span style="color:red" ng-show="nuevoforma.codigo.$dirty && nuevoforma.codigo.$invalid">
+    <span ng-show="nuevoforma.codigo.$error.required">El código del Collar es Requerido.</span>   
+    </span>
+  </label> 
+    -->
+    
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Color 1</span>
+    <input type="text" placeholder="negro" ng-model="mascota.color1"  >
+  </label>
+    
+ <label class="item item-input item-stacked-label">
+    <span class="input-label">Color 2</span>
+    <input type="text" placeholder="negro" ng-model="mascota.color2"  >
+  </label>   
+    
+ <label class="item item-input item-stacked-label">
+    <span class="input-label">Tipo de pelo</span>
+    <input type="text" placeholder="lasio largo" ng-model="mascota.tipopelo"    >
+  </label>
+    
+ <label class="item item-input item-stacked-label">
+    <span class="input-label">Edad</span>
+    <input type="text" placeholder="1 año" ng-model="mascota.edad"    >
+ </label>
+    
+    
+ <label class="item item-input item-stacked-label">
+    <span class="input-label">Status</span>
+    <input type="text" placeholder="perdido" ng-model="mascota.status"    >
+ </label>
+    
+    <label class="item item-input item-stacked-label">
+    <span class="input-label">Observación</span>
+       <textarea name="contenido"   rows="6"  placeholder="Observación"
+			ng-model="mascota.observacion">
+	</textarea>
+</label>
+    
+
+<!--  <label class="item item-input item-stacked-label">
+    <span class="input-label">Teléfono en Emergencia</span>
+    <input type="text" placeholder="02-2070338"    ng-model="mascota.telefonoemergencia"   >
+  </label>-->
+
+</div>
+
+<div class="padding">
+    <span style="color:red">
+        {{mensajeadvertencia}}
+    </span>
+
+<div class="padding">
+          <button type="submit" class="button button-block button-positive icon-center ion-checkmark"
+                    >Guardar</button>
+</div>
+
+<!--      <button ng-click="openModal()" >Open Modal</button>-->
+<!--      This is open for everyone!
+      <img src="../img/New-York-population-Times-Square.jpg"/>-->
+<!--  </ion-content>
+</ion-view>-->
+
+<!--<script id="my-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar >
+      <h1 class="title">My Modal title</h1>
+    <button ng-click="closeModal()" >Open Modal</button>
+    </ion-header-bar>
+    <ion-content>
+      Hello!
+    </ion-content>
+  </ion-modal-view>
+</script>-->

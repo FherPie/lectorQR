@@ -1,0 +1,44 @@
+<ion-view view-title="Buscador de Mascotas" name="dashboard-view">
+
+
+      <ion-content style="text-align:center" ng-controller="lectorController">
+      <div class="item">
+          <img src="img/scanner.jpg" alt=""/>
+            <h2>Localizar Mascotas</h2>
+      <p>Escanne un Codigo de Barra del Collar Dogsi</p>
+      </div>
+      <div class="item">
+      
+      <button class="button button-block button-positive" ng-click='leercodigo()'>Escanear</button>
+      </div>
+          <div class="item">
+          <img src="img/codigo.jpg" alt=""/>
+            <h2>Localizar Mascotas</h2>
+          <p> Ingrese el Codigo del Collar Dogsi</p>
+          </div>    
+          
+       <form ng-submit="buscar()"  ng-model="forma" name="nuevoforma" class="css-form" novalidate>
+                <label class="item item-input item-stacked-label">
+<!--            <span class="input-label">Ingresar Código del Collar</span>-->
+        <input type="text" placeholder="123456748"  name="codigo" ng-model="mascota.codigo"   />
+  </label> 
+         
+           
+                   <div class="padding">
+    <span style="color:red">
+        {{mensajeadvertencia}}
+    </span>
+</div>  
+           
+           
+           
+           
+     <div class="padding">
+          <button type="submit" class="button button-block button-positive icon-center "
+                    >Buscar</button>
+</div>     
+</form>    
+
+     </ion-content>
+
+</ion-view>

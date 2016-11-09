@@ -1,0 +1,89 @@
+<ion-view  name="registro" view-title="Registro Persona">
+    <ion-content >  
+        <form ng-submit="insertar()"  ng-model="forma" name="nuevoforma" class="css-form" novalidate>
+<div class="list">
+ <div class="row">
+     <div class="col col-60 "><span class="input-label">Nuevo Usuario</span></div>
+</div>
+<!--    <div class="item item-thumbnail-left">
+        <img id="myImage" class="fotomascota" ng-src="{{persona.foto}}"  />
+       <button class="padding-left button  button-clear button-positive" type="button" ng-click="tomarfoto()">
+  <i class="icon ion-android-camera ion-ios-camera"></i> Tomar Fotografía
+</button><br/>
+  <button class="padding-left button button-clear button-positive" type="button" ng-click="escojerfoto()">
+  <i class="icon  ion-images ion-ios-albums"></i> Escojer del Album
+</button> 
+
+</div>-->
+    
+
+    
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Nombre</span>
+    <input type="text" placeholder="Matusalen"  name="nombres"  ng-model="persona.nombres" required>
+  </label>
+    
+   <label class="item item-input item-stacked-label">
+    <span class="input-label"  >Email</span>
+    <input type='email' validar-email name='email' id='email'   placeholder="john@suhr.com"  ng-model="persona.email" required>
+     <span style="color:red" ng-show="nuevoforma.email.$dirty && nuevoforma.email.$invalid">
+    <span ng-show="nuevoforma.email.$error.required">El Email  es Requerido.</span>   
+    </span>
+  </label>  
+
+
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Usuario</span>
+    <input type="text"   name="userid"  ng-model="persona.userid" required>
+  </label>
+
+<!--
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Teléfono</span>
+    <input type="text" placeholder="02-2070338"    ng-model="persona.telefono"   >
+  </label>-->
+    
+  <label class="item item-input item-stacked-label">
+    <span class="input-label" >Contraseña</span>
+    <input type="password" placeholder="****" name="pwd"    ng-model="persona.pwd"  >
+  </label>
+    
+  <label class="item item-input item-stacked-label">
+    <span class="input-label" >Vuelve a escribir la Contraseña</span>
+    <input type="password" placeholder="****" name="apellidos"    ng-model="persona.apellidos"  >
+  </label>
+    
+
+</div>
+
+<div class="padding">
+    <span style="color:red">
+        {{mensajeadvertencia}}
+    </span>
+</div>
+
+<div class="padding">
+
+    <button type="submit" class="button button-block button-positive icon-center "
+                    >Registrarme</button>
+   <a ui-sref="login"   class="button button-block button-positive icon-center "
+                    >Cancelar</a>
+</div>
+    
+    </form>
+</ion-content>
+</ion-view>
+
+
+
+<script id="my-modal.html" type="text/ng-template">
+<ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Registro</h1>
+    </ion-header-bar>
+    <ion-content>
+    {{mensaje}}
+    </ion-content>
+
+  </ion-modal-view>
+</script>

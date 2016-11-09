@@ -1,0 +1,25 @@
+<ion-view  name="dashboard-view" view-title="Publicación">
+    
+<!--  <ion-nav-buttons side="right left">
+    <button class="button icon-left ion-compass button-clear" ng-click="openModal()">Nueva</button>
+    <button class="button icon-left ion-compass button-clear" ng-click="openModal()">Nueva</button>
+    
+      <button class="button button-icon icon ion-navicon"></button>
+<ion-nav-back-button class="button-clear"
+    ng-click="myGoBack()">
+    <i class="ion-arrow-left-c"></i> Back
+  </ion-nav-back-button>
+  <button class="button ion-arrow-left-c button-clear"  ng-click="myGoBack()" >  Cancelar</button>
+  <div class="h1 title">Mascota</div>
+  <button class="button icon-left ion-share button-clear"  >Guardar</button>
+  </ion-nav-buttons>-->
+
+<ion-content ng-controller="noticiaControl" >
+<!--<div >-->
+<form ng-submit="insertar()"  ng-model="forma" name="nuevoforma" class="css-form" novalidate>
+    <div ng-include="'plantillas/formmnoticia.html'"/>
+</form>
+<!-- </div>-->
+ 
+ </ion-content>
+</ion-view>
