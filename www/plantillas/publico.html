@@ -1,4 +1,4 @@
-<ion-view  view-title="Mascotas"   name="dashboard-view">
+<ion-view  view-title="Mascotas"  name="public-tab" >
     
 <!--        
     <ion-nav-bar class="bar-balanced">-->
@@ -27,7 +27,7 @@
     <!--<a class="item item-avatar item-button-right" ng-repeat="mascota in mascotas"   >-->
         
         
-        <mascota-info info="mascota" ng-repeat="mascota in mascotas" ></mascota-info>
+        <mascota-info info="mascota" index="{{$index}}" ng-repeat="mascota in mascotas" ></mascota-info>
         
         
         

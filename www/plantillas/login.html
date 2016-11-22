@@ -1,18 +1,18 @@
-<ion-view  view-title="Pets Mananger">
-        <ion-nav-bar class="bar-positive">
+<ion-view  view-title="DOGSI APP">
+        <ion-nav-bar class="bar-energized">
 </ion-nav-bar>
        <ion-content class="padding">
-<ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="true">
+<ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false">
     
   <ion-slide>
-         <ion-content class="has-header">
+         <ion-content >
 <!--            <img ng-src="{{ article.imageURL }}" ng-style="{ 'width': '100%' }" />
             <div ng-bind-html="article.html"></div>-->
             
-            <div class=""><h1>Bienvenido a DOGSI APP</h1>
+            <div class=""><h3>Bienvenido</h3>
             
             
-                <p>Conoce mas de esta Interesante alternativa para la ayuda animal y rescate que permite que cientos de animales en cautiverio, o que simplemente  no tuvieron suerte, la tengan!</p>
+                <p style="text-align: justify">Conoce mas de esta Interesante alternativa para la ayuda animal y rescate que permite que cientos de animales en cautiverio, o que simplemente  no tuvieron suerte, la tengan!</p>
     
 <div class="row">
                 <div class="col item-image mosaico" ><img src="img/dandy.JPG"/></div>
@@ -29,25 +29,37 @@
                                 <div class="col item-image mosaico"><img src="img/descarga (4).jpg"/></div>
 </div>
             </div>
-<ul class="list">
+<!--<ul class="list">
     <li class="item">
-          <button class=" button button-royal button-outline  button-outline"  ng-click="nextSlide()" >Login</button>
+          <button class=" button button-dark button-outline  button-outline"  ng-click="nextSlide()" >Login</button>
 
     </li>
-    <li class="item">
-    <button class=" button button-royal button-outline  button-outline"  ng-click="nextSlide()" >Noti-Mascotas</button>
-    </li>
-</ul>
+ 
+</ul>-->
 
-            
 
-    
-    
-    
-            
+      <form ng-submit="login()"  ng-model="forma" name="nuevoforma" class="css-form" novalidate>   
+
+      <div class="list list-inset">
+          <label class="item item-input">
+              <input type="text" placeholder="Username" ng-model="data.username">
+          </label>
+          <label class="item item-input">
+              <input type="password" placeholder="Password" ng-model="data.password">
+          </label>
+      </div>
+ <div class="padding">
+    <span style="color:red">
+        {{mensajeadvertencia}}
+    </span>
+</div>
+          <button type="submit" class="button button-block button-positive">Login</button>
+      <a class="button button-block button-positive" ui-sref="registropersona">Crear una Cuenta en DogSiApp</a>
+      
+      </form>
             </ion-content>
       
-    
+      
     
   </ion-slide>
 <!--  <ion-slide>
@@ -77,7 +89,7 @@
       <button class=" button button-royal button-outline"  ng-click="nextSlide()" >Siguiente</button>     
       
   </ion-slide>-->
-  <ion-slide>
+<!--  <ion-slide>
   <ion-modal-view>
       
       <form ng-submit="login()"  ng-model="forma" name="nuevoforma" class="css-form" novalidate>   
@@ -101,7 +113,7 @@
       </form>
       
 </ion-modal-view>
-  </ion-slide>
+  </ion-slide>-->
 </ion-slide-box>
       </ion-content>
     </ion-view>

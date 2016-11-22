@@ -1,0 +1,66 @@
+<ion-view>
+  <ion-nav-bar class="bar-light letrasfonodnegro"  >
+      <ion-nav-back-button >
+      </ion-nav-back-button>
+      
+</ion-nav-bar>
+    <ion-content >
+        
+<div class="list">
+  <div class="item item-divider item-text-wrap">
+    <i class="icon ion-folder assertive"></i>
+    {{noticia.asunto}}
+  </div>
+    
+    <a class="item item-icon-left item-text-wrap  text-pulling"  style="text-align: justify">
+    <i class="icon ion-information-circled energized"></i>
+{{noticia.cuerpo}}
+      
+      </a>
+    <div class="item item-divider">
+    Usuario
+  </div>  
+    
+  <a class="item item-icon-left item-icon-right" href="#">
+    <i class="icon ion-person-stalker assertive"></i>
+   <h2>Usuario</h2>
+      <p>{{entidad.userid}}</p>
+              <i class="icon  ion-chatbubble-working positive"></i>
+  </a>
+
+
+  <div class="item item-divider">
+    Mascota
+  </div>
+  <div class="item item-thumbnail-left col-90 nomargin" style="border:1px solid white" >
+    <img class="icon" ng-src="data:image/png;base64, {{ mascota.pin }}" height="50" width="50">
+       <h2 class="title ">Nombre: {{ mascota.nombres }}</h2> 
+       <p class="developer">Raza:{{ mascota.raza }}</p>
+        <p class="price">Color1:{{ mascota.color1 }}</p>
+        <p class="price">Color2:{{ mascota.color2 }}</p>
+        <p class="price">Tipo de Pelo:{{ mascota.tipopelo }}</p>
+        <p class="price">Edad:{{ mascota.edad }}</p>
+          <i class="icon ion-drag"></i>
+        <p class="price">Status:{{ mascota.status }}</p>
+        <p class="price">Observación:{{ mascota.observacion }}</p>
+    </div>
+</div>
+
+<!--    
+  <ion-tabs class="tabs-icon-top tabs-dark">
+    
+    <ion-tab title="Noticias" icon="ion-home" href="#/principal/tablero">
+      <ion-nav-view name="dash-tab"></ion-nav-view>
+    </ion-tab>
+    
+    <ion-tab title="dd" icon="ion-ribbon-b" href="#/principal/publico">
+      <ion-nav-view name="public-tab"></ion-nav-view>
+    </ion-tab>
+    
+    <ion-tab title="Busqueda" icon="ion-earth" href="#/principal/administrador">
+      <ion-nav-view name="admin-tab"></ion-nav-view>
+    </ion-tab>
+    
+  </ion-tabs>-->
+        </ion-content>
+</ion-view>

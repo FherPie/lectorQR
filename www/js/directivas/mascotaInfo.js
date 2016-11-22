@@ -1,4 +1,4 @@
-angular.module('lectorQR').directive('mascotaInfo', function($ionicActionSheet, Mascotas, $state,$ionicPopup, $timeout) { 
+angular.module('lectorQR').directive('mascotaInfo', function($ionicActionSheet, Mascotas, $state,$ionicPopup, $timeout, Mascotaid, Login) { 
   return { 
     restrict: 'E', 
     replace:false, 
@@ -43,14 +43,16 @@ atravez de la aplicacion le envio un mensaje o algo asi");
          if(index===0){
             
 //           Mascotas.mascota($scope.info.id);
-
-  $state.go('principal.editarmascota', {id:$scope.info.id }, {reload: true});
-//          console.log(Mascotas.obtenermascota($scope.info.id));   
+  console.log($attr.index);  
+              $state.go('principal.editarmascota', {id:$attr.index }, {reload: true});
+ 
+ 
          } 
          
               //Publicar MASCOTA 
          if(index===1){
             
+//          console.log(Mascotas.obtenermascota($scope.info));   
 
       $state.go('principal.insertarnoticia', {myParam:$scope.info }, {reload: true});
          
@@ -77,13 +79,26 @@ var confirmPopup = $ionicPopup.confirm({
    
    confirmPopup.then(function(res) {
      if(res) {
-         Mascotas.eliminarmascota($scope.info.id);
-         console.log($scope.info.id);
-         $state.go('principal.publico', { }, {reload: true}); 
-         
-       console.log('You are sure');
+ 
+  $scope.id= Mascotas.getlistamascotas()[$attr.index].id;
+    
+ 
+        
+     Mascotaid.remove({code: $scope.id }).$promise.then(function(data) {
+
+                 console.log("data");
+                    console.log(data.Mensaje);
+    });
+
+    Mascotas.eliminarmascota($attr.index);
+     
+     
+     
+ 
+ 
      } else {
-       console.log('You are not sure');
+
+
      }
    });
  };

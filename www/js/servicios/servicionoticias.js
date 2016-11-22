@@ -1,14 +1,37 @@
-  angular.module('lectorQR')
-  .factory('ListaNoticias', function($resource, HOST) {
+angular.module('lectorQR')
+.factory('ListaNoticias', function($resource, HOST) {
   return $resource(HOST.HostName+'Noticias/:code',  {code:'@code'}, {
      query:{method: "GET", isArray:true}
-  })})
- .factory('RegistroNoticia', function($resource, HOST) {
+ })})
+.factory('RegistroNoticia', function($resource, HOST) {
   var data= $resource(HOST.HostName+'Noticias/registro',  {}, {
-     save:{method: 'POST', headers: [{'Content-Type': 'application/json'}], isArray:true}
+     save:{method: 'POST', headers: [{'Content-Type': 'application/json'}], isArray:true},
+     update:{method:'PUT', headers: [{'Content-Type': 'application/json'}], isArray:true}
   });
   return data;
 })
+.factory('Noticiaid', function($resource, HOST) {
+  var data= $resource(HOST.HostName+'Noticias/xid/:code',{code:'@code'}, {
+     get:{method: 'GET', isArray:true},
+     remove:{method:'DELETE', isArray:false}
+  });
+  return data;
+})
+//        .factory('EditarNoticia', function ($resource,  HOST) {
+//      var data = $resource(HOST.HostName+'Noticias/registro', {}, {
+//     
+//      });
+//      return data;
+// })
+//})
+//    .factory('EditarNoticia', function ($resource,  HOST) {
+//      var data = $resource(HOST.HostName+'http://jsonplaceholder.typicode.com/users/:user', {user: '@user'}, {
+//      update:{
+//          method:'PUT', headers: [{'Content-Type': 'application/json'}], isArray:true
+//          }
+//      });
+//      return data;
+//  })
 .service('Noticias', function() {
 
 //    var items=[

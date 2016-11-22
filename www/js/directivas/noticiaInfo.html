@@ -1,129 +1,32 @@
-<!--<div class="row  ">       
-   <a class="item" href=""  >
-<div class="item item-thumbnail-left col-90 nomargin" style="border:1px solid white" ng-click="showActionsheet()">
-    <img class="icon" ng-src="data:image/png;base64, {{ info.pin }}" height="50" width="50">
-       
-       <p class="developer">Raza: {{ info.raza }}</p>
-        <p class="price">Color 1: </p>
-        <p class="price">Color 2: {{ info.color2 }}</p>
-        <p class="price">Edad: {{ info.edad }}</p>
-    <button class="item badge badge-assertive " >Status {{info.status}}</button>
-        
-<div class="row nomargin">
-    <div class="col col-50"><strong><p>Nombre:</p></strong></div>
-  <div class="col col-50"> <p>{{ info.nombres }}</p></div>
-  <div class="col">.col</div>
-</div>
-
-<div class="row">
-   <div class="col col-50"><strong><p>Edad:</p></strong></div>
-  <div class="col col-50"> <p>{{ info.edad }}</p></div>
-</div>
-
-<div class="row">
-   <div class="col col-50"><strong><p>Raza:</p></strong></div>
-  <div class="col col-50"> <p>{{ info.raza }}</p></div>
-</div>
 
 
-<div class="row">
-  <div class="col"><strong><p>Col1:</p></strong></div>
-  <div class="col">{{ info.color1 }}</div>
-   <div class="col"><strong><p>Col2:</p></strong></div>
-  <div class="col">{{ info.color2 }}</div>
-</div> 
+      <h2 class="title boldfirst developer">Título: {{info.asunto}}</h2>
 
-<div class="row">
-   <div class="col col-50"><strong><p>Pelo:</p></strong></div>
-  <div class="col col-50"> <p>{{ info.tipopelo }}</p></div>
-</div>
-
-<div class="row">
-  <div class="col">.col</div>
-  <div class="col col-75">.col.col-75</div>
-</div>
-
-    
-        
-        <p class="price">{{ info.id }}</p>
-          
-     <button  style="z-index: 100000" class="ion-alert button badge-energized" >
-       Acciones
-      </button>
-
-    </div>-->
-<!--        </a>-->
-<!--<div class=" col-10  " ng-click="showActionsheet()" >-->
-<!--    <div class="row">
-  <div class="col"><button class="button button-positive">
-      <i class="icon ion-edit"></i>
-    </button></div>
-  <div class="col"><button class="button button-assertive">
-      <i class="icon ion-alert"></i>
-    </button></div>
-  <div class="col"><button class="button button-positive">
-      <i class="icon ion-more"></i>
-    </button></div>-->
-<!--</div>-->
-<!--          <p class="developer">Raza: {{ info.raza }}</p>
-        <p class="price">Color 1: {{ info.color1 }}</p>
-        <p class="price">Edad: {{ info.edad }}</p>
-    -->
-    <!--<h2 class="title">Status: {{info.status}}</h2>-->
-    
-    <!--<button class="item badge badge-assertive " ng-click="mensajes()" >Mensajes Nuevos 0</button>-->
-    <!--<button class="item badge badge-assertive " >Status {{info.status}}</button>-->
-     <!--<p class="price">Por fa necestio unas crias tuyas agracias</p>-->
-<!--        <p class="price">{{ info.edad }}</p>-->
-<!--    Mensajes Nuevos 0-->
-
-<!--</div>-->  
-
-
-    <i class="icon ion-heart assertive"></i>
-      <h2 class="title boldfirst positive">Título: {{info.asunto}}</h2>
-      <p class="title boldfirst calm"> {{info.cuerpo }}</p>
-      <span class="badge badge-balanced">{{info.mascota.status }}</span>
-<!--      <span class="item-note">
-      Status
-    </span>-->
-
-
-   
-<div class="list card">
-
-  <!--<div class="item item-avatar">-->
-  <div class="item">
-    <!--<img src="mcfly.jpg">-->
-    <h2>Usuario: {{info.entidad.userid}}</h2>
+  <div class="item item-avatar">
+      <img src="img/icono-perfil.png" alt=""/>
+    <p class="developer">Usuario: {{ entidad.userid }}</p>
     <p>Fecha: {{info.fecha | date:"dd/mm/yyyy"}}</p>
   </div>
 
   <div class="item item-body">
-      <center>  <img class=""  ng-src="data:image/png;base64, {{ info.mascota.pin }}" height="200" width="200">
-      </center>
-          <!--<img class="icon"  >-->
-    <p>
-      {{info.mascota.observacion}}
-    </p>
+
+            <p class="title boldfirst calm" style="text-align: justify"> {{info.cuerpo }}</p>
+      <span class="badge badge-balanced">{{info.mascota.status }}</span>
+
     <p>
             <div class="row">
                 <div class="col" ng-click="editar()" ng-if="id == idlogueado"><button class="button button-light">
       <i class="icon ion-edit"></i>
     </button></div>
-  <div class="col"><button class="button button-light">
+  <div class="col" ng-click="borrar()" ng-if="id == idlogueado"  ><button class="button button-light">
       <i class="icon ion-alert"></i>
     </button></div>
-  <div class="col"><button class="button button-light">
+  <div class="col" ng-click="mensajes()" ><button class="button button-light">
       <i class="icon ion-more"></i>
     </button></div>
-        
-        
-<!--      <a href="#" class="subdued">1 Editar</a>
-      <a href="#" class="subdued">5 Borrar</a>
-      <a href="#" class="subdued">1 Like</a>
-      <a href="#" class="subdued">5 Comments</a>-->
-    </p>
+
+
+    
   </div>
 
 </div>

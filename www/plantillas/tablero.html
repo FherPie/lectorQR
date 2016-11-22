@@ -1,34 +1,29 @@
-<ion-view view-title="Noticias" >
- <ion-nav-bar class="bar-balanced">
+<ion-view view-title="Noticias" name="dash-tab"  >
+ <ion-nav-bar class="bar-dark ">
      
        <!--<div class="buttons">-->
   <ion-nav-buttons side="left">
     <!--<button class="button icon-right ion-alert button-stable" >Hola, {{username}}</button>-->
-        <button class="button icon-left ion-more " ng-click="popover.show($event)" ></button>
-    <h5 style="color:white" >Hola, {{username}}   </h5>
+        <button class="button icon-left ion-more button-clear" ng-click="popover.show($event)" ></button>
+    <!--<h5 style="color:white" >   </h5>-->
 
 <!--         <button class="button button-icon ion-more" >Hola
         </button>-->
   </ion-nav-buttons>
-             <ion-nav-buttons side="right">
-                 <button class="button icon-left ion-log-out " ng-click="logout()">Cerrar Sesión
-        </button> 
+             <!--<ion-nav-buttons side="right">-->
+                 <!--Noticias-->
+<!--                 <button class="button icon-left  button-clear ion-log-out " ng-click="logout()">Cerrar Sesión
+        </button> -->
     <!--<button class="" ng-click=""></button>-->
-  </ion-nav-buttons>
+  <!--</ion-nav-buttons>-->
            
-           
+        
       <!--</div>-->
-     
-     
-   
 
 </ion-nav-bar>
-    
-    
 
   <ion-content class="">
-      
-     
+
    <ion-refresher
     pulling-text="Pull to refresh..."
     on-refresh="doRefresh()">
@@ -36,11 +31,12 @@
       
   <ion-list>
       
-      <noticia-info info="item" ng-repeat="item in items" class="item item-text-wrap item-icon-left  item-icon-right" ></noticia-info>
-        
-      
-      
-      
+      <noticia-info info="item" index="{{$index}}" ng-repeat="item in items" class="item item-text-wrap item-icon-left  item-icon-right" >
+      </noticia-info>
+
+ 
+ 
+ 
   <ion-infinite-scroll
     on-infinite="loadMore()"
     distance="1%">
@@ -75,20 +71,19 @@
   </ion-content>
 </ion-view>
 
-<script id="templates/popover.html" type="text/ng-template">
+<script id="templates/popover.html" type="text/ng-template" >
       <ion-popover-view >
         <ion-content>
-          <div class="list">
-
+          <div class="list ">
+       <a class="item icon-left ion-happy-outline">
+            Hola, {{username}}  
+            </a>
                <ion-checkbox class="item"   ng-model="checkboxModel.value1" ng-change="CargarMisNoticias()" >Ver mis noticias</ion-checkbox>
-            <a class="item" href="http://ionicframework.com/docs/" target="_blank">
-              Documentation
-            </a>
-            <a class="item" href="http://showcase.ionicframework.com/" target="_blank">
-              Showcase
-            </a>
-            <a class="item" href="http://ionicframework.com/submit-issue/" target="_blank">
-              Submit an Issue
+
+         
+            <a class="item icon-left ion-log-out "  ng-click="logout()">
+                            Cerrar Sesión
+        
             </a>
             <a class="item" href="http://kreafast.com" target="_blank">
               Por Kreafast EC

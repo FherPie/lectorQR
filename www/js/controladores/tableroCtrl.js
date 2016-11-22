@@ -1,10 +1,11 @@
 angular.module('lectorQR.controllers')
-        .controller('DashCtrl', function ($scope, $state, $http, $ionicPopup, AuthService, Noticias, ListaNoticias, $ionicPopover) {
+        .controller('DashCtrl', function ($scope, $state, AuthService, Noticias, ListaNoticias, $ionicPopover) {
             
  
       $scope.checkboxModel = {
        value1 : false,
      };      
+           LlenarLista();
      
      
      $scope.id= AuthService.logeadoid();
@@ -15,9 +16,8 @@ angular.module('lectorQR.controllers')
                 $state.go('login');
             };
             
-            
 
-      LlenarLista($scope.checkboxModel.value1);
+
 
 
 
@@ -35,7 +35,7 @@ angular.module('lectorQR.controllers')
 //      $scope.$broadcast('scroll.infiniteScrollComplete');
 //    });
                 console.log("se ejecuta load more");
-                $scope.$broadcast('scroll.infiniteScrollComplete');
+//                $scope.$broadcast('scroll.infiniteScrollComplete');
             };
 
 
@@ -58,7 +58,7 @@ angular.module('lectorQR.controllers')
   };
 
 
-function LlenarLista(verdad) {
+function LlenarLista() {
     
     if($scope.checkboxModel.value1===false){
     
@@ -72,8 +72,12 @@ function LlenarLista(verdad) {
         
         $scope.items = Noticias.getlistaitems();
         console.log($scope.items);
-        
+//        
+//            
+//                    
       //Login.query({user: name+"_"+pw});
+      
+      
       if ($scope.items[0]  && $scope.items) {
           
 //             if ( $scope.items.length>0) {
@@ -113,6 +117,7 @@ function LlenarLista(verdad) {
 
             $scope.$on('$stateChangeSuccess', function () {
                 $scope.loadMore();
+                     LlenarLista();
             });
 
 

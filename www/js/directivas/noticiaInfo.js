@@ -1,4 +1,4 @@
-angular.module('lectorQR').directive('noticiaInfo', function($ionicActionSheet, Mascotas, $state,$ionicPopup, $timeout, AuthService) { 
+angular.module('lectorQR').directive('noticiaInfo', function($ionicActionSheet, Mascotas, $state,$ionicPopup, $timeout, AuthService, Noticias, Noticiaid, Usuario) { 
   return { 
     restrict: 'E', 
     replace:false, 
@@ -7,107 +7,91 @@ angular.module('lectorQR').directive('noticiaInfo', function($ionicActionSheet, 
       info: '=' 
     }, 
     templateUrl: 'js/directivas/noticiaInfo.html', 
-    link: function($scope,  $elem, $attr){
+    link: function($scope,  $elem, $attr ){
         
-        
+$scope.id= $scope.info.entidad;        
         
 $scope.mensajes= function(){
-console.log("La mascota recibe una notificación  que la puede leer. Alguien se puedo en contacto con ella\n\
-atravez de la aplicacion le envio un mensaje o algo asi");
-};      
+    $state.go('principal.infoadicicional', {entidad: $scope.entidad, noticia: $scope.info, mascota: $scope.info.mascota}, {reload: true});   
+}; 
+
+
+
+
+ 
+ $scope.entidad;
+ $scope.mascota;
+
+        Usuario.query({code:  $scope.id}).$promise.then(function(user) {
+        $scope.entidad = user[0]; 
+        });
         
-        $scope.id= $scope.info.entidad.id;
+
+     
+        $scope.id= $scope.info.entidad;
         $scope.idlogueado=AuthService.logeadoid();
         
         
 $scope.editar= function(){
     
 
-$state.go('principal.insertarnoticia', {myParam:$scope.info }, {reload: true});
-
+$state.go('principal.editarnoticia', {myNoti:$attr.index }, {reload: true});
+        
+//         console.log($scope.info.mascota);   
 };   
+
+
+$scope.borrar= function(){
+    
+ $scope.showConfirm();
+    
+    
+};   
+
+
+
+
+
+
+
         
-        
-
-       
-  $scope.showActionsheet = function() {
-      
-      
-   
-    $ionicActionSheet.show({
-      titleText: 'Mascota',
-      buttons: [
-        { text: '<i class="icon ion-edit"></i> Editar' },
-        { text: '<i class="icon ion-navigate"></i> Publicar' }
-//        { text: '<i class="icon ion-arrow-move"></i> Move' }
-      ],
-      destructiveText: 'Delete',
-      cancelText: 'Cancel',
-      cancel: function() {
-        console.log('CANCELLED');
-      },
-      buttonClicked: function(index) {
-         //EDITAR MASCOTA 
-         if(index===0){
-            
-//           Mascotas.mascota($scope.info.id);
-
-  $state.go('principal.editarmascota', {id:$scope.info.id }, {reload: true});
-//          console.log(Mascotas.obtenermascota($scope.info.id));   
-         } 
-         
-              //Publicar MASCOTA 
-         if(index===1){
-            
-
-      $state.go('principal.insertarnoticia', {myParam:$scope.info }, {reload: true});
-         
-               
-              
-              
-         }     
-         
-          
-        console.log('BUTTON CLICKED', index);
-        return true;
-      },
-      destructiveButtonClicked: function() {
-         
-           // A confirm dialog
- $scope.showConfirm = function() {
- 
-var confirmPopup = $ionicPopup.confirm({
-     title: 'Eliminar',
-     template: 'Esta seguro de Eliminar a la mascota?'
+  $scope.showConfirm = function() {
+   var confirmPopup = $ionicPopup.confirm({
+     title: 'Confirmación',
+//     template: 'Deseas borrar publicación'+$attr.index
+     template: 'Deseas borrar publicación'
    });
-   
- 
-   
+
    confirmPopup.then(function(res) {
      if(res) {
-         Mascotas.eliminarmascota($scope.info.id);
-         console.log($scope.info.id);
-         $state.go('principal.publico', { }, {reload: true}); 
          
-       console.log('You are sure');
+
+    $scope.id= Noticias.getlistaitems()[$attr.index].id;
+    
+    console.log(Noticias.getlistaitems());
+        
+     Noticiaid.delete({code: $scope.id }).$promise.then(function(data) {
+
+                 console.log("data");
+                    console.log(data.Mensaje);
+    });
+
+    Noticias.eliminaritem($attr.index);
+     
+     
+     
+     
+
+       
+       
      } else {
-       console.log('You are not sure');
+       
+       
+       
      }
    });
- };
-          
-    $scope.showConfirm();         
-    console.log('DESTRUCT');
-        
-        
-        
-        
-        
-        
-        return true;
-      }
-    });
-  };  
+ };       
+
         
     }
   }; 

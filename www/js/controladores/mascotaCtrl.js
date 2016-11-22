@@ -20,6 +20,24 @@ $scope.id= AuthService.logeadoid();
                 status: "",
                 observacion:""
             };
+            
+            
+          $scope.$on('$stateChangeSuccess', function () {
+               
+               
+           if ($stateParams.id) {
+                $scope.mascotaindex = $stateParams.id;
+                console.log( "Indice de la mascota"+     $scope.mascotaindex);
+                $scope.mascota = Mascotas.getlistamascotas()[$scope.mascotaindex];
+                 $scope.mascota.pin= $scope.mascota.pin.replace(/^data:image\/(png|jpg);base64,/, "");
+                $scope.mascota.pin="data:image/png;base64,"+$scope.mascota.pin;
+                $stateParams.id=null;
+             
+            }
+               
+    });
+            
+  
 
             $scope.mensajeadvertencia = '';
 
@@ -193,22 +211,37 @@ $scope.id= AuthService.logeadoid();
 //                Mascotas.agregarmascota($scope.mascota);          
             };
 
-
-
-
-
-
             $scope.editar = function () {
-
                 if ($scope.validar() === true) {
-
                     return false;
-
                 }
-                Mascotas.editarmascota($scope.mascota);
-                $state.go("principal.publico");
+         
+                $scope.mascota.pin= $scope.mascota.pin.replace(/^data:image\/(png|jpg);base64,/, "");
+                console.log($scope.mascota.pin);
+                  $scope.entry.data = $scope.mascota;
+                  RegistroMascota.update($scope.entry.data, function (data) {
+                    $scope.mensaje = data[0].Mensaje;
+                    $scope.tipomsj = data[0].tipo;
+                    $scope.showAlertEdit();
+                    console.log(data);
+                })
+                  console.log( Mascotas.getlistamascotas());
+               Mascotas.getlistamascotas()[$scope.mascotaindex]=$scope.mascota;
             };
             
+            
+         $scope.showAlertEdit = function () {
+                var alertPopup = $ionicPopup.alert({
+                    title: 'Publicación',
+                    template: $scope.mensaje
+                });
+
+                alertPopup.then(function () {
+                    $state.go('principal.publico', {}, {reload: true});
+
+                });
+            };
+
             
           
            $scope.showAlert = function () {
@@ -217,7 +250,7 @@ $scope.id= AuthService.logeadoid();
                     template: $scope.mensaje 
                 });
 
-                alertPopup.then(function (res) {
+                alertPopup.then(function () {
                          $state.go('principal.publico', {}, {reload: true});
 
                 });

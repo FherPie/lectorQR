@@ -65,13 +65,39 @@ angular.module('lectorQR', ['lectorQR.controllers','ionic','ngCordova', 'ngResou
   })
   .state('principal.tablero', {
     url: 'principal/tablero',
+    reload:true,
     views: {
         'dash-tab': {
           templateUrl: 'plantillas/tablero.html',
           controller: 'DashCtrl'
         }
+    },
+    data: {
+      authorizedRoles: [USER_ROLES.admin]
     }
   })
+ .state('principal.infoadicicional', {
+    url: 'principal/infoadicicional',
+    reload:true,
+   params: { entidad:null, noticia:null, mascota:null},
+    views: {
+        'dash-tab': {
+          templateUrl: 'plantillas/infoadicicional.html',
+          controller: 'infoadicionalCtrl'
+        }
+    },   
+     onEnter: function ($state, $stateParams) {
+      if (!$stateParams.entidad ||!$stateParams.noticia || !$stateParams.mascota ) {
+        $state.go('principal.tablero', {}, {reload: true});
+      }
+    },
+    data: {
+      authorizedRoles: [USER_ROLES.admin]
+    }
+  })
+  
+  
+  
   .state('principal.publico', {
     url: 'principal/publico',
     reload:true,
@@ -82,6 +108,8 @@ angular.module('lectorQR', ['lectorQR.controllers','ionic','ngCordova', 'ngResou
         }
     }
   })
+  
+  
   .state('principal.administrador', {
     url: 'principal/administrador',
     views: {
@@ -98,58 +126,74 @@ angular.module('lectorQR', ['lectorQR.controllers','ionic','ngCordova', 'ngResou
     url: 'principal/insertarmascota',
     views: {
         'public-tab': {
-          templateUrl: 'plantillas/nuevamascota.html'
+          templateUrl: 'plantillas/nuevamascota.html',
+          controller: 'mascotas1'
         }
     },
     data: {
       authorizedRoles: [USER_ROLES.admin]
     }
   }) 
-          
-    .state('principal.insertarnoticia', {
+  .state('principal.editarmascota', {
+    url: 'principal/editarmascota/',
+   params: { id:null},
+    views: {
+        'public-tab': {
+          templateUrl: 'plantillas/editarmascota.html',
+          controller: 'mascotas1'
+        }
+    },   
+ onEnter: function ($state, $stateParams) {
+      if (!$stateParams.id) {
+        $state.go('principal.publico', {}, {reload: true});
+      }
+      
+    },
+    data: {
+      authorizedRoles: [USER_ROLES.admin]
+    }
+  })
+ .state('principal.insertarnoticia', {
     url: 'principal/insertarnoticia/',
-   params: {myParam: null, myNoti:null},
+   params: {myParam: null},
     views: {
         'public-tab': {
           templateUrl: 'plantillas/nuevanoticia.html',
         controller:"noticiaControl"
         }
     },
+    onEnter: function ($state, $stateParams) {
+      console.log($stateParams.myParam);
+      if (!$stateParams.myParam) {
+//        $stateParams.restaurantId = $cookies.restaurantId;
+        $state.go('principal.publico', {}, {reload: true});
+      }
+    },
     data: {
       authorizedRoles: [USER_ROLES.admin]
     }
   })
-  
-  
    .state('principal.editarnoticia', {
     url: 'principal/editarnoticia/',
-   params: {myParam: null, myNoti:null},
+   params: { myNoti:null},
     views: {
-        'public-tab': {
-          templateUrl: 'plantillas/nuevanoticia.html',
-        controller:"noticiaControl"
+        'dash-tab': {
+          templateUrl: 'plantillas/editarnoticia.html',
+          controller:"noticiaControl"
         }
+    },
+    onEnter: function ($state, $stateParams) {
+//      console.log($stateParams.myParam);
+      if (!$stateParams.myNoti) {
+        $state.go('principal.tablero', {}, {reload: true});
+      }
+      
     },
     data: {
       authorizedRoles: [USER_ROLES.admin]
     }
   })
-  
-  
-  
-  
-                 
-       .state('principal.editarmascota', {
-    url: 'principal/editarmascota/{id}',
-    views: {
-        'public-tab': {
-          templateUrl: 'plantillas/editarmascota.html'
-        }
-    },
-    data: {
-      authorizedRoles: [USER_ROLES.admin]
-    }
-  }).state('registropersona', {
+  .state('registropersona', {
     url: '/registropersona',
     templateUrl: 'plantillas/registropersona.html',
     controller:"registro"

@@ -3,17 +3,20 @@ angular.module('lectorQR')
   return $resource(HOST.HostName+'Mascotas/:code',  {code:'@code'}, {
      query:{method: "GET", isArray:true}
   })})
-  
-  
  .factory('RegistroMascota', function($resource, HOST) {
   var data= $resource(HOST.HostName+'Mascotas/registro',  {}, {
-     save:{method: 'POST', headers: [{'Content-Type': 'application/json'}], isArray:true}
+     save:{method: 'POST', headers: [{'Content-Type': 'application/json'}], isArray:true},
+     update:{method:'PUT', headers: [{'Content-Type': 'application/json'}], isArray:true}
   });
   return data;
 })
-
-
-//
+.factory('Mascotaid', function($resource, HOST) {
+  var data= $resource(HOST.HostName+'Mascotas/xid/:code',{code:'@code'}, {
+     get:{method: 'GET', isArray:true},
+     remove:{method:'DELETE', isArray:false}
+  });
+  return data;
+})
 .service('Mascotas', function() {
    
    var mascotas = new Array();

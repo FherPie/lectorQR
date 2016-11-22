@@ -17,23 +17,16 @@ angular.module('lectorQR.controllers')
      $scope.mensajeadvertencia='';
      
             $scope.validar = function () {
-                
-                
-                
+
                  if ($scope.data.username === "") {
                   $scope.mensajeadvertencia="*Escriba su usuario";
                     return true;
                 }
 
-    
-
-       
                 if ($scope.data.password=="") {
                    $scope.mensajeadvertencia="*Escriba la contraseña";
                     return true;
                 }
-
-                
 
                 $scope.mensajeadvertencia='';
                 return false;
